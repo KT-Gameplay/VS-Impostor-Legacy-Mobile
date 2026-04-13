@@ -32,7 +32,7 @@ class Project extends HXProject
    * REMEMBER TO CHANGE THIS WHEN THE GAME UPDATES!
    * You only have to change it here, the rest of the game will query this value.
    */
-  static final VERSION:String = "0.8.4";
+  static final VERSION:String = "4.1.0";
 
   /**
    * The build's number and version code.
@@ -43,23 +43,23 @@ class Project extends HXProject
   /**
    * The game's name. Used as the default window title.
    */
-  static final TITLE:String = "Friday Night Funkin'";
+  static final TITLE:String = "VS Impostor Legacy";
 
   /**
    * The game's name on mobile. Used as the title for the game on the home screen.
    */
-  static final TITLE_MOBILE:String = "FNF";
+  static final TITLE_MOBILE:String = "Legacy";
 
   /**
    * A package name used for identifying the app on various app stores.
    */
-  static final PACKAGE_NAME:String = "me.funkin.fnf";
+  static final PACKAGE_NAME:String = "me.sussy.fnf";
 
   /**
    * The name of the generated executable file.
    * For example, `"Funkin"` will create a file called `Funkin.exe`.
    */
-  static final EXECUTABLE_NAME:String = "Funkin";
+  static final EXECUTABLE_NAME:String = "Legacy";
 
   /**
    * The relative location of the source code.
@@ -158,25 +158,6 @@ class Project extends HXProject
    * Asset path globs to exclude on native platforms.
    */
   static final EXCLUDE_ASSETS_NATIVE:Array<String> = ["*.mp3"];
-
-  /**
-   * Asset path globs to exclude on platforms with `CENSOR_EXPLETIVES` enabled.
-   */
-  static final EXCLUDE_ASSETS_CENSORED:Array<String> = ["stressCutscene.mp4", "stressPicoCutscene.mp4", "darnellCutscene.mp4"];
-
-  /**
-   * Asset path globs to exclude on platforms with `CENSOR_EXPLETIVES` disabled.
-   */
-  static final EXCLUDE_ASSETS_UNCENSORED:Array<String> = ["stressCutscene-censored.mp4", "stressPicoCutscene-censored.mp4", "darnellCutscene-censored.mp4"];
-
-  //
-  // ASSET EMBEDDING
-  //
-
-  /**
-   * The songs whose audio files should be embedded inside the executable.
-   */
-  static final EMBED_SONGS_AUDIO:Array<String> = ["spaghetti"];
 
   //
   // BUILD FLAGS
