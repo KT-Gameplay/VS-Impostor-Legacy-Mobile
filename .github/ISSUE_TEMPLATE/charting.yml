@@ -1,7 +1,7 @@
-name: Charting Issue
-description: Report an issue with the placement of notes in the game.
+name: Chart Event Issue
+description: Report an issue with the placement of events or bugs in the events in the game.
 labels: ["type: charting issue", "status: pending triage"]
-title: "Charting Issue: "
+title: "Chart Event Issue: "
 body:
   - type: markdown
     attributes:
@@ -42,7 +42,7 @@ body:
 
   - type: markdown
     attributes:
-      value: "## Describe the charting issue(s)."
+      value: "## Describe the event issue(s)."
 
   - type: markdown
     attributes:
