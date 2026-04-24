@@ -1,6 +1,6 @@
 name: Chart Event Issue
 description: Report an issue with the placement of events or bugs in the events in the game.
-labels: ["type: charting issue", "status: pending triage"]
+labels: ["type: Event Issue", "status: Pending Review"]
 title: "Chart Event Issue: "
 body:
   - type: markdown
