@@ -1,0 +1,42 @@
+{
+ "version": "2.2.4",
+ "songName": "Monotone Attack",
+ "artist": "Biddle3",
+ "charter": "KT_Gameplay",
+ "offsets": { },
+ "playData": {
+  "songVariations": [
+   "biddle",
+   "attack",
+   "fabs"
+  ],
+  "difficulties": [
+   "easy",
+   "normal",
+   "hard"
+  ],
+  "characters": {
+   "player": "clowfoe",
+   "girlfriend": "fabs",
+   "opponent": "attack",
+   "opponentVocals": [
+    "attack"
+   ]
+  },
+  "stage": "attack",
+  "noteStyle": "funkin",
+  "ratings": {
+   "hard": 0
+  },
+  "previewEnd": 0
+ },
+ "generatedBy": "Friday Night Funkin' - v0.8.5",
+ "timeChanges": [
+  {
+   "t": 0,
+   "b": 0,
+   "bpm": 148,
+   "bt": [4, 4, 4, 4]
+  }
+ ]
+}
