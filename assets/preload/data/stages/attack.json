@@ -1,0 +1,191 @@
+{
+ "version": "1.0.2",
+ "name": "Attack",
+ "props": [
+  {
+   "assetPath": "BG/attack/monotoneback",
+   "atlasSettings": null,
+   "name": "bg",
+   "position": [0, 0],
+   "scale": 1,
+   "startingAnimation": ""
+  },
+  {
+   "assetPath": "BG/attack/crowd",
+   "atlasSettings": null,
+   "name": "crowd",
+   "position": [850, 850],
+   "scale": 1,
+   "startingAnimation": "idle",
+   "zIndex": 1,
+   "animations": [
+    {
+        "name": "idle",
+        "prefix": "tess n gus fring instance 1",
+        "offsets": [0, 0],
+        "frameRate": 24
+    }
+   ]
+  },
+  {
+   "assetPath": "BG/attack/fg",
+   "atlasSettings": null,
+   "name": "fg",
+   "position": [0, 0],
+   "scale": 1,
+   "startingAnimation": "",
+   "zIndex": 2
+  },
+  {
+   "assetPath": "BG/attack/nick t",
+   "atlasSettings": null,
+   "name": "nick",
+   "position": [600, 700],
+   "scale": 1,
+   "startingAnimation": "idle",
+   "zIndex": 3,
+   "animations": [
+    {
+        "name": "idle",
+        "prefix": "nick t idle",
+        "offsets": [0, 0],
+        "frameRate": 24
+    },
+    {
+        "name": "okay",
+        "prefix": "nick t animation",
+        "offsets": [-4, -2],
+        "frameRate": 24
+    }
+   ]
+  },
+  {
+   "assetPath": "BG/attack/offbi",
+   "atlasSettings": null,
+   "name": "offbi",
+   "position": [1250, 625],
+   "scale": 1,
+   "startingAnimation": "idle",
+   "zIndex": 4,
+   "animations": [
+    {
+        "name": "idle",
+        "prefix": "offbi",
+        "offsets": [0, 0],
+        "frameRate": 24
+    }
+   ]
+  },
+  {
+   "assetPath": "BG/attack/neworbyy",
+   "atlasSettings": null,
+   "name": "orbyy",
+   "position": [850, 629],
+   "scale": 1,
+   "startingAnimation": "idle",
+   "zIndex": 5,
+   "animations": [
+    {
+        "name": "idle",
+        "prefix": "idle",
+        "offsets": [0, 0],
+        "frameRate": 24
+    },
+    {
+        "name": "shutup",
+        "prefix": "shutup",
+        "offsets": [129, 2],
+        "frameRate": 24
+    }
+   ]
+  },
+  {
+   "assetPath": "BG/attack/loggoattack",
+   "atlasSettings": null,
+   "name": "loggo",
+   "position": [950, 775],
+   "scale": 1,
+   "startingAnimation": "idle",
+   "zIndex": 6,
+   "animations": [
+    {
+        "name": "idle",
+        "prefix": "loggfriend",
+        "offsets": [0, 0],
+        "frameRate": 24
+    }
+   ]
+  },
+  {
+   "assetPath": "BG/attack/cooper",
+   "atlasSettings": null,
+   "name": "cooper",
+   "position": [1950, 750],
+   "scale": 1,
+   "startingAnimation": "idle",
+   "zIndex": 7,
+   "animations": [
+    {
+        "name": "idle",
+        "prefix": "bg seat 1 instance 1",
+        "offsets": [0, 0],
+        "frameRate": 24
+    }
+   ]
+  },
+  {
+   "assetPath": "BG/attack/backlights",
+   "atlasSettings": null,
+   "name": "backlights",
+   "position": [0, 0],
+   "scale": 1,
+   "startingAnimation": "",
+   "zIndex": 60
+  },
+  {
+   "assetPath": "BG/attack/lamp",
+   "atlasSettings": null,
+   "name": "lamp",
+   "position": [0, 0],
+   "scale": 1,
+   "startingAnimation": "",
+   "zIndex": 501
+  },
+  {
+   "assetPath": "BG/attack/frontlight",
+   "atlasSettings": null,
+   "name": "frontlight",
+   "position": [10, 0],
+   "scale": 1,
+   "startingAnimation": "",
+   "zIndex": 502
+  },
+  {
+   "assetPath": "BG/attack/purple",
+   "atlasSettings": null,
+   "name": "purple",
+   "position": [0, 0],
+   "scale": 1,
+   "startingAnimation": "",
+   "zIndex": 503
+  }
+ ],
+ "characters": {
+  "bf": {
+   "cameraOffsets": [-75, -125],
+   "position": [1550.7, 1268.9],
+   "zIndex": 300
+  },
+  "dad": {
+   "cameraOffsets": [125, -125],
+   "position": [732.5, 1389],
+   "zIndex": 200
+  },
+  "gf": {
+   "cameraOffsets": [95, -265],
+   "position": [483.65, 1418.6],
+   "zIndex": 100
+  }
+ },
+ "cameraZoom": 0.75
+    }
