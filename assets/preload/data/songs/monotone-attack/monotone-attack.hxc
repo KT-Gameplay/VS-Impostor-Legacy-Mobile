@@ -13,11 +13,11 @@ class MonotoneAttackScript extends Module
 	var target2 = null;
 	var curVar:String;
 	var crowd;
-  var cooper;
-  var nick;
-  var orbyy;
-  var offbi;
-  var loggo;
+    var cooper;
+    var nick;
+    var orbyy;
+    var offbi;
+    var loggo;
 
 	function new()
 	{
@@ -371,24 +371,24 @@ class MonotoneAttackScript extends Module
             {
                 if(event.eventData.getString('anim') == 'okay') // kinda weird thought of me but it works
                 {
-                  FlxTween.tween(orbyy, {alpha: 0.1}, 0.4);
-				          FlxTween.tween(offbi, {alpha: 0.1}, 0.4);
-				          FlxTween.tween(loggo, {alpha: 0.1}, 0.4);
-			          	FlxTween.tween(PlayState.instance.currentStage.getGirlfriend(), {alpha: 0.1}, 0.4);
-				          FlxTween.tween(PlayState.instance.currentStage.getCharacter('mom'), {alpha: 0.1}, 0.4);
-				          FlxTween.tween(PlayState.instance.currentStage.getDad(), {alpha: 0.25}, 0.4);
-				          FlxTween.tween(PlayState.instance.currentStage.getBoyfriend(), {alpha: 0.25}, 0.4);
+                FlxTween.tween(orbyy, {alpha: 0.1}, 0.4);
+				FlxTween.tween(offbi, {alpha: 0.1}, 0.4);
+				FlxTween.tween(loggo, {alpha: 0.1}, 0.4);
+				FlxTween.tween(PlayState.instance.currentStage.getGirlfriend(), {alpha: 0.1}, 0.4);
+				FlxTween.tween(PlayState.instance.currentStage.getCharacter('mom'), {alpha: 0.1}, 0.4);
+				FlxTween.tween(PlayState.instance.currentStage.getDad(), {alpha: 0.25}, 0.4);
+				FlxTween.tween(PlayState.instance.currentStage.getBoyfriend(), {alpha: 0.25}, 0.4);
                 }
 
                 if(event.eventData.getString('anim') == 'idle')
                 {
-                  FlxTween.tween(orbyy, {alpha: 1}, 0.4);
-				          FlxTween.tween(offbi, {alpha: 1}, 0.4);
-			          	FlxTween.tween(loggo, {alpha: 1}, 0.4);
-			          	FlxTween.tween(PlayState.instance.currentStage.getGirlfriend(), {alpha: 1}, 0.4);
-			          	FlxTween.tween(PlayState.instance.currentStage.getCharacter('mom'), {alpha: 1}, 0.4);
-			          	FlxTween.tween(PlayState.instance.currentStage.getDad(), {alpha: 1}, 0.4);
-				          FlxTween.tween(PlayState.instance.currentStage.getBoyfriend(), {alpha: 1}, 0.4);
+                FlxTween.tween(orbyy, {alpha: 1}, 0.4);
+				FlxTween.tween(offbi, {alpha: 1}, 0.4);
+				FlxTween.tween(loggo, {alpha: 1}, 0.4);
+				FlxTween.tween(PlayState.instance.currentStage.getGirlfriend(), {alpha: 1}, 0.4);
+				FlxTween.tween(PlayState.instance.currentStage.getCharacter('mom'), {alpha: 1}, 0.4);
+				FlxTween.tween(PlayState.instance.currentStage.getDad(), {alpha: 1}, 0.4);
+				FlxTween.tween(PlayState.instance.currentStage.getBoyfriend(), {alpha: 1}, 0.4);
                 }
             }
         }
