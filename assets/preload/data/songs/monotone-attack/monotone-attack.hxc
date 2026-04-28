@@ -1,0 +1,396 @@
+import funkin.modding.module.Module;
+import funkin.play.PlayState;
+import funkin.play.character.CharacterDataParser;
+import funkin.Conductor;
+import funkin.util.GRhythmUtil;
+import StringTools;
+import flixel.tweens.FlxTween;
+
+class MonotoneAttackScript extends Module
+{	
+	var mom = null;
+	var target1 = null;
+	var target2 = null;
+	var curVar:String;
+	var crowd;
+  var cooper;
+  var nick;
+  var orbyy;
+  var offbi;
+  var loggo;
+
+	function new()
+	{
+		super("monotone-attack");
+	}
+
+	function onSongLoaded(event)
+    {
+        super.onSongLoaded(event);
+
+        if(PlayState.instance.currentSong.id.toLowerCase() == 'monotone-attack' && PlayState.instance.currentVariation != null) PlayState.instance.currentInstrumental = ''; // fucking hate this bruh
+
+        if(PlayState.instance.currentSong.id.toLowerCase() == 'monotone-attack')
+        {
+			var stage = PlayState.instance.currentStage;
+
+            crowd = stage.getNamedProp('crowd');
+            cooper = stage.getNamedProp('cooper');
+            nick = stage.getNamedProp('nick');
+            orbyy = stage.getNamedProp('orbyy');
+            offbi = stage.getNamedProp('offbi');
+            loggo = stage.getNamedProp('loggo');
+        }
+    }
+
+	override function onCountdownStart(event:CountdownScriptEvent):Void
+	{
+		super.onCountdownStart(event);
+
+		if (PlayState.instance.currentSong.id.toLowerCase() == 'monotone-attack')
+		{
+			if (PlayState.instance.currentStage == null) return;
+			if (PlayState.instance.currentStage.getCharacter('mom') != null) return;
+
+			mom = CharacterDataParser.fetchCharacter('biddle');
+			PlayState.instance.currentStage.add(mom);
+
+			mom.zIndex = 50;
+			mom.x = PlayState.instance.currentStage.getBoyfriendPosition().x - mom.characterOrigin.x + 250;
+			mom.y = PlayState.instance.currentStage.getBoyfriendPosition().y - mom.characterOrigin.y;
+			mom.flipX = false;
+
+			PlayState.instance.currentStage.refresh();
+			PlayState.instance.currentStage.characters.set('mom', mom);
+
+			switch (PlayState.instance.currentVariation) // KT on the duty here
+			{
+				case 'attack':
+					target1 = mom;
+					target2 = PlayState.instance.currentStage.getGirlfriend();
+					curVar = 'attack';
+
+				case 'biddle':
+					target1 = PlayState.instance.currentStage.getBoyfriend();
+					target2 = PlayState.instance.currentStage.getDad();
+					curVar = 'biddle';
+
+				case 'fabs':
+					target1 = PlayState.instance.currentStage.getBoyfriend();
+					target2 = PlayState.instance.currentStage.getDad();
+					curVar = 'fabs';
+
+				default:
+					target1 = mom;
+					target2 = PlayState.instance.currentStage.getGirlfriend();
+					curVar = 'clowfoe';
+			}
+		}
+	}
+
+	function onNoteHit(event:HitNoteScriptEvent)
+	{
+		if (PlayState.instance.currentSong.id.toLowerCase() == 'monotone-attack')
+		{
+			// Override the hit note animation.
+			if (event.note.noteData.kind == "Opponent 2 Sing" || event.note.noteData.kind == "GF Sing")
+			{
+				event.cancelEvent();
+				event.stopPropagation();
+				return;
+			}
+
+			// end my suffering bruh
+			if(event.note.noteData.getMustHitNote())
+			{
+			   if(curVar == 'attack')
+			   {
+				event.stopPropagation();
+				PlayState.instance.currentStage.getDad().playSingAnimation(event.note.noteData.getDirection(), false);
+				PlayState.instance.currentStage.getDad().holdTimer = 0;
+			   }
+
+			   if(curVar == 'fabs')
+			   {
+				event.stopPropagation();
+				PlayState.instance.currentStage.getGirlfriend().playSingAnimation(event.note.noteData.getDirection(), false);
+				PlayState.instance.currentStage.getGirlfriend().holdTimer = 0;
+			   }
+
+			   if(curVar == 'biddle')
+			   {
+				event.stopPropagation();
+				mom.playSingAnimation(event.note.noteData.getDirection(), false);
+				mom.holdTimer = 0;
+			   }
+			}
+
+			if(!event.note.noteData.getMustHitNote())
+			{
+			   if(curVar == 'attack')
+			   {
+				event.stopPropagation();
+				PlayState.instance.currentStage.getBoyfriend().playSingAnimation(event.note.noteData.getDirection(), false);
+				PlayState.instance.currentStage.getBoyfriend().holdTimer = 0;
+			   }
+
+			   if(curVar == 'fabs')
+			   {
+				event.stopPropagation();
+				mom.playSingAnimation(event.note.noteData.getDirection(), false);
+				mom.holdTimer = 0;
+			   }
+
+			   if(curVar == 'biddle')
+			   {
+				event.stopPropagation();
+				PlayState.instance.currentStage.getGirlfriend().playSingAnimation(event.note.noteData.getDirection(), false);
+				PlayState.instance.currentStage.getGirlfriend().holdTimer = 0;
+			   }
+			}
+		}
+	}
+
+	function onNoteIncoming(event)
+	{
+		if (PlayState.instance.currentSong.id.toLowerCase() == 'monotone-attack')
+		{
+			if (event.note.noteData.kind == "Opponent 2 Sing" || event.note.noteData.kind == "GF Sing")
+			{
+				event.note.hasBeenHit = true;
+				event.note.alpha = 0.001; // legacy update
+
+				if (event.note.holdNoteSprite != null)
+				{
+					event.note.holdNoteSprite.alpha = 0.001;
+				}
+			}
+		}
+	}
+
+	function onUpdate(event)
+	{
+		super.onUpdate(event);
+
+		if (PlayState.instance != null && !PlayState.instance.isInCutscene)
+		{
+			processNotes(event.elapsed);
+		}
+	}
+
+	function processNotes(elapsed:Float):Void
+	{
+		if (PlayState.instance.currentSong.id.toLowerCase() == 'monotone-attack')
+		{
+			if (
+				PlayState.instance.opponentStrumline == null
+				|| PlayState.instance.opponentStrumline.notes.members == null
+			)
+			{
+				return;
+			}
+			for (note in PlayState.instance.opponentStrumline.notes.members)
+			{
+				if (note == null) continue;
+
+				if (note.noteData.kind == "Opponent 2 Sing")
+				{
+					if (note.alive)
+						note.hasBeenHit = false;
+
+					var r = GRhythmUtil.processWindow(note, false);
+
+					note.hasBeenHit = true;
+
+					if (r.botplayHit)
+					{
+						if (PlayState.instance.currentStage != null && target1 != null)
+						{
+							target1.playSingAnimation(note.noteData.getDirection(), false);
+							target1.holdTimer = 0;
+						}
+
+						note.hasBeenHit = true;
+
+						note.visible = false;
+						note.kill();
+
+						if (note.holdNoteSprite != null)
+						{
+							note.holdNoteSprite.missedNote = false;
+
+							note.holdNoteSprite.sustainLength =
+								(note.holdNoteSprite.strumTime + note.holdNoteSprite.fullSustainLength)
+								- Conductor.instance.songPosition;
+						}
+					}
+
+					if (note.holdNoteSprite != null)
+					{
+						if (
+							note.hasBeenHit
+							&& !note.holdNoteSprite.missedNote
+							&& note.holdNoteSprite.sustainLength > 0
+						)
+						{
+							if (
+								note.hasBeenHit
+								&& PlayState.instance.currentStage != null
+								&& target1 != null
+								&& target1.isSinging()
+							)
+							{
+								target1.holdTimer = 0;
+							}
+
+							if (
+								Conductor.instance.songPosition > note.holdNoteSprite.strumTime
+								&& note.hasBeenHit
+							)
+							{
+								// Hold note is currently being hit, clip it off.
+								note.holdNoteSprite.visible = true;
+
+								note.holdNoteSprite.sustainLength =
+									(note.holdNoteSprite.strumTime + note.holdNoteSprite.fullSustainLength)
+									- Conductor.instance.songPosition;
+
+								if (note.holdNoteSprite.sustainLength <= 10)
+								{
+									note.holdNoteSprite.visible = false;
+								}
+							}
+						}
+					}
+				}
+			}
+			for (note in PlayState.instance.opponentStrumline.notes.members)
+			{
+				if (note == null) continue;
+
+				if (note.noteData.kind == "GF Sing")
+				{
+					if (note.alive)
+						note.hasBeenHit = false;
+
+					var r = GRhythmUtil.processWindow(note, false);
+
+					note.hasBeenHit = true;
+
+					if (r.botplayHit)
+					{
+						if (PlayState.instance.currentStage != null && mom != null)
+						{
+							target2.playSingAnimation(note.noteData.getDirection(), false);
+							target2.holdTimer = 0;
+						}
+
+						note.hasBeenHit = true;
+
+						note.visible = false;
+						note.kill();
+
+						if (note.holdNoteSprite != null)
+						{
+							//note.holdNoteSprite.hitNote = true;
+							note.holdNoteSprite.missedNote = false;
+
+							note.holdNoteSprite.sustainLength =
+								(note.holdNoteSprite.strumTime + note.holdNoteSprite.fullSustainLength)
+								- Conductor.instance.songPosition;
+						}
+					}
+
+					if (note.holdNoteSprite != null)
+					{
+						if (note.hasBeenHit && !note.holdNoteSprite.missedNote && note.holdNoteSprite.sustainLength > 0
+						)
+						{
+							// Make sure the opponent keeps singing while the note is held.
+							if (note.hasBeenHit && PlayState.instance.currentStage != null && target2 != null && target2.isSinging()
+							)
+							{
+								target2.holdTimer = 0;
+							}
+
+							if (
+								Conductor.instance.songPosition > note.holdNoteSprite.strumTime
+								&& note.hasBeenHit
+							)
+							{
+								// Hold note is currently being hit, clip it off.
+								note.holdNoteSprite.visible = true;
+
+								note.holdNoteSprite.sustainLength =
+									(note.holdNoteSprite.strumTime + note.holdNoteSprite.fullSustainLength)
+									- Conductor.instance.songPosition;
+
+								if (note.holdNoteSprite.sustainLength <= 5)
+								{
+									note.holdNoteSprite.visible = false;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	function onBeatHit(event)
+    {
+        if(PlayState.instance == null) return;
+        if(PlayState.instance.currentSong.id.toLowerCase() != 'monotone-attack') return;
+		if(PlayState.instance.currentStage == null) return;
+
+        super.onBeatHit(event);
+
+        if (event.beat % 2 == 0)
+        {
+            cooper.playAnimation('idle', true);
+            crowd.playAnimation('idle', true);
+            if (!StringTools.startsWith(nick.getCurrentAnimation(), 'okay')) nick.playAnimation('idle', true);
+	    }
+	    else if (event.beat % 2 == 1)
+	    {
+            offbi.playAnimation('idle', true);
+            if (!StringTools.startsWith(orbyy.getCurrentAnimation(), 'shutup')) orbyy.playAnimation('idle', true);
+            loggo.playAnimation('idle', true);
+	    }
+    }
+
+	function onSongEvent(event)
+    {
+		if(PlayState.instance == null) return;
+		if(PlayState.instance.currentSong.id.toLowerCase() != 'monotone-attack') return;
+        super.onSongEvent(event);
+
+        if(event.eventData.eventKind == 'PlayAnimation')
+        {
+            if(event.eventData.getString('target') == 'nick')
+            {
+                if(event.eventData.getString('anim') == 'okay') // kinda weird thought of me but it works
+                {
+                  FlxTween.tween(orbyy, {alpha: 0.1}, 0.4);
+				          FlxTween.tween(offbi, {alpha: 0.1}, 0.4);
+				          FlxTween.tween(loggo, {alpha: 0.1}, 0.4);
+			          	FlxTween.tween(PlayState.instance.currentStage.getGirlfriend(), {alpha: 0.1}, 0.4);
+				          FlxTween.tween(PlayState.instance.currentStage.getCharacter('mom'), {alpha: 0.1}, 0.4);
+				          FlxTween.tween(PlayState.instance.currentStage.getDad(), {alpha: 0.25}, 0.4);
+				          FlxTween.tween(PlayState.instance.currentStage.getBoyfriend(), {alpha: 0.25}, 0.4);
+                }
+
+                if(event.eventData.getString('anim') == 'idle')
+                {
+                  FlxTween.tween(orbyy, {alpha: 1}, 0.4);
+				          FlxTween.tween(offbi, {alpha: 1}, 0.4);
+			          	FlxTween.tween(loggo, {alpha: 1}, 0.4);
+			          	FlxTween.tween(PlayState.instance.currentStage.getGirlfriend(), {alpha: 1}, 0.4);
+			          	FlxTween.tween(PlayState.instance.currentStage.getCharacter('mom'), {alpha: 1}, 0.4);
+			          	FlxTween.tween(PlayState.instance.currentStage.getDad(), {alpha: 1}, 0.4);
+				          FlxTween.tween(PlayState.instance.currentStage.getBoyfriend(), {alpha: 1}, 0.4);
+                }
+            }
+        }
+    }
+}
