@@ -1,0 +1,81 @@
+{
+	"renderType": "sparrow",
+	"version": "1.0.1",
+	"offsets": [
+		0,
+		0
+	],
+	"danceEvery": 2,
+	"scale": 1,
+	"name": "biddle",
+	"cameraOffsets": [
+		225,
+		384
+	],
+	"flipX": true,
+	"isPixel": false,
+	"singTime": 6.1,
+	"startingAnimation": "idle",
+	"healthIcon": {
+		"id": "biddle",
+		"isPixel": false
+	},
+	"assetPath": "characters/freeplay/biddle",
+	"animations": [
+		{
+			"frameIndices": [],
+			"prefix": "biddle idle",
+			"offsets": [
+				-30,
+				-90
+			],
+			"frameRate": 24,
+			"name": "idle",
+			"looped": false
+		},
+		{
+			"frameIndices": [],
+			"prefix": "biddle left",
+			"offsets": [
+				8,
+				-155
+			],
+			"frameRate": 24,
+			"name": "singLEFT",
+			"looped": false
+		},
+		{
+			"frameIndices": [],
+			"prefix": "biddle down",
+			"offsets": [
+				-9,
+				-253
+			],
+			"frameRate": 24,
+			"name": "singDOWN",
+			"looped": false
+		},
+		{
+			"frameIndices": [],
+			"prefix": "biddle up",
+			"offsets": [
+				2,
+				-117
+			],
+			"frameRate": 24,
+			"name": "singUP",
+			"looped": false
+		},
+		{
+			"frameIndices": [],
+			"prefix": "biddle right",
+			"offsets": [
+				-34,
+				-106
+			],
+			"frameRate": 24,
+			"name": "singRIGHT",
+			"looped": false
+		}
+	]
+}

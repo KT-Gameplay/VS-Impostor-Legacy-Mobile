@@ -1,0 +1,81 @@
+{
+	"renderType": "sparrow",
+	"version": "1.0.1",
+	"offsets": [
+		0,
+		0
+	],
+	"danceEvery": 2,
+	"scale": 0.9,
+	"name": "fabs",
+	"cameraOffsets": [
+		340,
+		190
+	],
+	"flipX": false,
+	"isPixel": false,
+	"singTime": 4,
+	"startingAnimation": "idle",
+	"healthIcon": {
+		"id": "fabs",
+		"isPixel": false
+	},
+	"assetPath": "characters/freeplay/fabs",
+	"animations": [
+		{
+			"frameIndices": [],
+			"prefix": "fabs idle",
+			"offsets": [
+				0,
+				0
+			],
+			"frameRate": 28,
+			"name": "idle",
+			"looped": false
+		},
+		{
+			"frameIndices": [],
+			"prefix": "fabs left",
+			"offsets": [
+				0,
+				0
+			],
+			"frameRate": 28,
+			"name": "singLEFT",
+			"looped": false
+		},
+		{
+			"frameIndices": [],
+			"prefix": "fabs right",
+			"offsets": [
+				0,
+				10
+			],
+			"frameRate": 28,
+			"name": "singRIGHT",
+			"looped": false
+		},
+		{
+			"frameIndices": [],
+			"prefix": "fabs down",
+			"offsets": [
+				-5,
+				0
+			],
+			"frameRate": 24,
+			"name": "singDOWN",
+			"looped": false
+		},
+		{
+			"frameIndices": [],
+			"prefix": "fabs up",
+			"offsets": [
+				0,
+				10
+			],
+			"frameRate": 24,
+			"name": "singUP",
+			"looped": false
+		}
+	]
+}
