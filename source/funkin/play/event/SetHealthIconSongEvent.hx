@@ -3,6 +3,7 @@ package funkin.play.event;
 import funkin.data.event.SongEventSchema;
 import funkin.data.character.CharacterData.HealthIconData;
 import funkin.data.song.SongData.SongEventData;
+import flixel.util.FlxColor;
 
 /**
  * This class handles song events which change the player's health icon, or the opponent's health icon.
@@ -41,6 +42,7 @@ class SetHealthIconSongEvent extends SongEvent
 
   static final DEFAULT_X_OFFSET:Float = 0.0;
   static final DEFAULT_Y_OFFSET:Float = 0.0;
+  static final DEFAULT_RGB:Array<Int> = [88, 88, 88];
 
   public override function handleEvent(data:SongEventData):Void
   {
@@ -51,6 +53,7 @@ class SetHealthIconSongEvent extends SongEvent
     // if (PlayState.instance.isMinimalMode) return;
 
     var offsets:Array<Float> = [data.value.offsetX ?? DEFAULT_X_OFFSET, data.value.offsetY ?? DEFAULT_Y_OFFSET];
+    var colorArray:Array<Int> = [data.value.r ?? DEFAULT_RGB[0], data.value.g ?? DEFAULT_RGB[1], data.value.b ?? DEFAULT_RGB[2]];
 
     var healthIconData:HealthIconData = {
       id: data.value.id ?? Constants.DEFAULT_HEALTH_ICON,
@@ -58,6 +61,7 @@ class SetHealthIconSongEvent extends SongEvent
       flipX: data.value.flipX ?? DEFAULT_FLIPX,
       isPixel: data.value.isPixel ?? DEFAULT_ISPIXEL,
       offsets: offsets,
+      barColor: colorArray
     };
 
     switch (data?.value?.char ?? DEFAULT_CHAR)
@@ -128,7 +132,22 @@ class SetHealthIconSongEvent extends SongEvent
         title: 'Y Offset',
         defaultValue: DEFAULT_Y_OFFSET,
         type: SongEventFieldType.FLOAT,
-      }]
+      }, {
+        name: 'r',
+        title: 'Red',
+        defaultValue: 88,
+        type: SongEventFieldType.FLOAT,
+      }. {
+        name: 'g',
+        title: 'Green',
+        defaultValue: 88,
+        type: SongEventFieldType.FLOAT,
+      }, {
+        name: 'b',
+        title: 'Blue',
+        defaultValue: 88,
+        type: SongEventFieldType.FLOAT,
+         }]
     }]);
   }
 }
