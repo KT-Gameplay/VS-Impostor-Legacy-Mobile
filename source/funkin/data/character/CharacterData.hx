@@ -537,7 +537,8 @@ class CharacterDataParser
         scale: null,
         flipX: null,
         isPixel: null,
-        offsets: null
+        offsets: null,
+        barColor: null
       };
     }
 
@@ -560,6 +561,10 @@ class CharacterDataParser
     {
       input.healthIcon.offsets = DEFAULT_OFFSETS;
     }
+
+    if (input.healthIcon.barColor == null)
+    {
+      input.healthIcon.barColor = DEFAULT_BAR_COLOR;
 
     if (input.startingAnimation == null)
     {
