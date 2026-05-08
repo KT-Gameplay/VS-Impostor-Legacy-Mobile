@@ -19,6 +19,7 @@ import funkin.util.assets.DataAssets;
 import funkin.util.VersionUtil;
 import haxe.Json;
 import flixel.graphics.frames.FlxFrame;
+import flixel.util.FlxColor;
 
 @:nullSafety
 class CharacterDataParser
@@ -460,6 +461,7 @@ class CharacterDataParser
   public static final DEFAULT_NAME:String = 'Untitled Character';
   public static final DEFAULT_OFFSETS:Array<Float> = [0, 0];
   public static final DEFAULT_HEALTHICON_OFFSETS:Array<Int> = [0, 25];
+  public static final DEFAULT_BAR_COLOR:Array<Float> = [88, 88, 88];
   public static final DEFAULT_RENDERTYPE:CharacterRenderType = CharacterRenderType.Sparrow;
   public static final DEFAULT_SCALE:Float = 1;
   public static final DEFAULT_SCROLL:Array<Float> = [0, 0];
@@ -858,9 +860,9 @@ typedef HealthIconData =
 
   /**
    * The health bar color in RGB.
-   * @default [255, 255, 255]
+   * @default [88, 88, 88]
    */
-   var healthBarColor:Null<Array<Float>>;
+   var barColor:Null<Array<Float>>;
 }
 
 typedef DeathData =
