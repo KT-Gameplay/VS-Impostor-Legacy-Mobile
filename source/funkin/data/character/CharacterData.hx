@@ -855,6 +855,12 @@ typedef HealthIconData =
    * @default [0, 25]
    */
   var offsets:Null<Array<Float>>;
+
+  /**
+   * The health bar color in RGB.
+   * @default [255, 255, 255]
+   */
+   var healthBarColor:Null<Array<Float>>;
 }
 
 typedef DeathData =
